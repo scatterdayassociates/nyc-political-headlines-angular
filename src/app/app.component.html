@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header">
+    <h1>NYC Political Headlines</h1>
+    <p class="subtitle">{{ articles.length }} articles</p>
+    <p class="description">Recent coverage from City & State and The City</p>
+  </div>
+
+  <div class="articles-section">
+    <div class="article-card" 
+         *ngFor="let article of articles" 
+         [class.selected]="article.selected"
+         (click)="toggleArticle(article)">
+      <h3>{{ article.title }}</h3>
+      <div class="article-meta">
+        <span class="source">{{ article.source }}</span>
+        <span class="date">{{ article.date }}</span>
+      </div>
+      <button class="select-btn" [class.active]="article.selected">
+        {{ article.selected ? 'Selected' : 'Select Story' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="keywords-section">
+    <h2>Associated Keywords</h2>
+    <p class="section-description">Keywords generated from your selections above</p>
+    <div class="keywords-container" *ngIf="keywords.length > 0; else noKeywords">
+      <span class="keyword-tag" *ngFor="let keyword of keywords">{{ keyword }}</span>
+    </div>
+    <ng-template #noKeywords>
+      <p class="empty-state">Select keywords from the news articles above to populate this section</p>
+    </ng-template>
+  </div>
+
+  <div class="procurement-section">
+    <h2>Matching Plan IDs</h2>
+    <p class="section-description">Procurement plans matched by keyword relevance</p>
+    <div class="empty-state">
+      <p>No matching plans</p>
+      <p class="hint">Select stories to find related procurement plans</p>
+    </div>
+  </div>
+</div>
