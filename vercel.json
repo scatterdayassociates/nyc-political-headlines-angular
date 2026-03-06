@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm install && npm run build",
-  "outputDirectory": "dist/nyc-political-headlines/browser",
+  "outputDirectory": "dist/nyc-political-headlines",
   "installCommand": "npm install",
   "framework": null,
   "rewrites": [
